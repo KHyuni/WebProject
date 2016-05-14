@@ -13,7 +13,7 @@
 	<header>
 		<div>
 			<div id="title">
-				<h3> Spring 활용한 웹프로젝트 홈페이지 </h3>
+				<h3> Spring 활용한 웹프로젝트 홈페이지!! </h3>
 			</div>
 		</div>
 	</header>
