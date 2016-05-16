@@ -14,19 +14,19 @@
 		<p class="addrTitle" align="center">주소검색</p>
 	</div>
 	<div>
-		<p class="notice">※ 찾고자 하는 도로명주소 또는 건물명을 선택해주세요.</p>
+		<p class="notice">※ 찾고자 하는 도로명주소 또는 건물명을 선택해주세요.</p>	
 	</div>
 	<div class="checkBoxArea">
 		&nbsp;&nbsp;<input type="radio" name="checkForSearch" id="checkForSearch1" checked="checked" value="roadSearch" onclick="checkBtn(1);"> 도로명주소 검색
 		<input type="radio" name="checkForSearch" id="checkForSearch2" value="buildSearch" onclick="checkBtn(2);"> 건물명 검색
 	</div>
-	 <div class="totalCnt">
+<%-- 	 <div class="totalCnt">
 	 	(총${totalCnt}건)
-	 </div>
+	 </div> --%>
 	<div class="selectBoxArea">
 		 <div class="innerBox1">
 		 	<c:if test="${!empty searchAddr}">
-		 		&nbsp;&nbsp;시/도&nbsp;&nbsp;&nbsp;&nbsp;<select name="selectBox1" id="selectBox1" class="selectBox1">
+		 		&nbsp;&nbsp;시/도&nbsp;&nbsp;&nbsp;&nbsp;<select name="selectBox1" id="selectBox1" class="selectBox1" onchange="changeValue(this.value);">
 		 			<c:forEach var="vo" items="${searchAddr}" varStatus="i">
 		 				<option value="${vo.sido_name}">${vo.sido_name}</option>
 		 			</c:forEach>
@@ -34,7 +34,7 @@
 		 	</c:if>
 		 	<c:if test="${!empty searchAddr}">
 		 		&nbsp;&nbsp;&nbsp;시/군/구&nbsp;&nbsp;&nbsp;<select name="selectBox2" id="selectBox2" class="selectBox2">
-		 			<c:forEach var="vo" items="${searchAddr}" varStatus="i">
+		 			<c:forEach var="vo" items="${searchSigungu}" varStatus="i">
 		 				<option value="${vo.sigungu_name}">${vo.sigungu_name}</option>
 		 			</c:forEach>
 		 		</select>

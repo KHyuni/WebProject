@@ -2,16 +2,13 @@ package com.project.web.DAO;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
-import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Timestamp;
 import java.util.ArrayList;
-import java.util.List;
 
 import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.PreparedStatementCreator;
-import org.springframework.jdbc.core.RowMapper;
 
 import com.project.web.Util.Constant;
 import com.project.web.VO.WebAddrVO;
@@ -69,19 +66,15 @@ public class WebDAO {
 			result = true;
 		}
 		return result;
-	}	
+	}
 	
-	public ArrayList<WebAddrVO> searchAddr(String sido_name, String sigungu_name, String hangjung_dong_name){
-			
-		System.out.println("시/도 = "+sido_name);
-		System.out.println("시/군/구 = "+sigungu_name);
-	
-		String query = "select sido_name, sigungu_name, road_name, building_bonbun, building_bubun, zipcode, hangjung_dong_name, sigungu_building_name, hangjung_dong_name "
-				+ "from building_info where sido_name = ? and sigungu_name = ? and hangjung_dong_name = ?";
-
-		
-		return (ArrayList<WebAddrVO>) template.query(query, new Object[]{sido_name,sigungu_name,hangjung_dong_name}, new BeanPropertyRowMapper<WebAddrVO>(WebAddrVO.class));
-
+	public ArrayList<WebAddrVO> findSido(){
+		String query = "SELECT sido_name FROM BUILDING_INFO bi GROUP BY sido_name HAVING COUNT(*) > 1 ORDER BY sido_name";
+		return (ArrayList<WebAddrVO>) template.query(query, new BeanPropertyRowMapper<WebAddrVO>(WebAddrVO.class));
 	}
 
+/*	public ArrayList<WebAddrVO> findSigunGu(){
+
+	}*/
+	
 }

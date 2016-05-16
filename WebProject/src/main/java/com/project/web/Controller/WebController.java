@@ -96,4 +96,9 @@ public class WebController {
 		return "/addrPopup";
 	}
 	
+	@RequestMapping(value = "/addrSearch")
+	public String addrSearch(){
+		return "/addrSearch";
+	}
+	
 }
