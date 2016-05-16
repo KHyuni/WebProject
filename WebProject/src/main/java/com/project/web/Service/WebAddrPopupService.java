@@ -16,10 +16,13 @@ public class WebAddrPopupService implements WebServiceImpl{
 		
 		String sido_name = "서울특별시";
 		String sigungu_name = "마포구";
-		String road_name = "성암로9안길";
+		String hangjung_dong_name = "상암동";
 		
-		ArrayList<WebAddrVO> vo = dao.searchAddr(sido_name, sigungu_name, road_name);
+		ArrayList<WebAddrVO> vo = dao.searchAddr(sido_name, sigungu_name, hangjung_dong_name);
+		int rowNum = vo.size();
+		System.out.println(rowNum);
 		model.addAttribute("searchAddr", vo);
+		model.addAttribute("totalCnt", rowNum);
 		
 	}
 

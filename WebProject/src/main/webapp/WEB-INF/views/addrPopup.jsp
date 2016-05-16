@@ -20,17 +20,25 @@
 		&nbsp;&nbsp;<input type="radio" name="checkForSearch" id="checkForSearch1" checked="checked" value="roadSearch" onclick="checkBtn(1);"> 도로명주소 검색
 		<input type="radio" name="checkForSearch" id="checkForSearch2" value="buildSearch" onclick="checkBtn(2);"> 건물명 검색
 	</div>
-	<!-- Before data binding. 그리드를 위한 임시 하드코딩. -->
+	 <div class="totalCnt">
+	 	(총${totalCnt}건)
+	 </div>
 	<div class="selectBoxArea">
-		<div class="innerBox1">	
-		&nbsp;&nbsp;시/도&nbsp;&nbsp;&nbsp;&nbsp;<select class="selectBox1">
-				<option>서울특별시</option>
-				<option>경기도</option>
-		    </select>
-		&nbsp;&nbsp;&nbsp;시/군/구&nbsp;&nbsp;&nbsp;<select class="selectBox2">
-				<option>마포구</option>
-				<option>강남구</option>
-		    </select>
+		 <div class="innerBox1">
+		 	<c:if test="${!empty searchAddr}">
+		 		&nbsp;&nbsp;시/도&nbsp;&nbsp;&nbsp;&nbsp;<select name="selectBox1" id="selectBox1" class="selectBox1">
+		 			<c:forEach var="vo" items="${searchAddr}" varStatus="i">
+		 				<option value="${vo.sido_name}">${vo.sido_name}</option>
+		 			</c:forEach>
+		 		</select>
+		 	</c:if>
+		 	<c:if test="${!empty searchAddr}">
+		 		&nbsp;&nbsp;&nbsp;시/군/구&nbsp;&nbsp;&nbsp;<select name="selectBox2" id="selectBox2" class="selectBox2">
+		 			<c:forEach var="vo" items="${searchAddr}" varStatus="i">
+		 				<option value="${vo.sigungu_name}">${vo.sigungu_name}</option>
+		 			</c:forEach>
+		 		</select>
+		 	</c:if>
 		 </div>
 		 <div id="innerBox2">
 		    &nbsp;&nbsp;도로명&nbsp;&nbsp;<input type="text" name="roadName" class="roadName" size="15">

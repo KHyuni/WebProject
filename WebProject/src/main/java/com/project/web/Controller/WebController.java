@@ -84,22 +84,16 @@ public class WebController {
 		
 		return "/memberList";
 	}	
+
 	
 	@RequestMapping(value = "/addrPopup")
-	public String addrPopup(Model model){
-		System.out.println("addrPopup()");
-
-		return "/addrPopup";
-	}
-	
-	@RequestMapping(value = "/resultAddr")
 	public String resultAddr(Model model){
-		System.out.println("resultAddr()");
+		System.out.println("addrPopup()");
 		
 		serviceImpl = new WebAddrPopupService();
 		serviceImpl.execute(model);
 		
-		return "/resultAddr";
+		return "/addrPopup";
 	}
 	
 }
