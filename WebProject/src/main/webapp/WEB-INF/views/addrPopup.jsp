@@ -26,7 +26,7 @@
 	<div class="selectBoxArea">
 		 <div class="innerBox1">
 		 	<c:if test="${!empty searchAddr}">
-		 		&nbsp;&nbsp;시/도&nbsp;&nbsp;&nbsp;&nbsp;<select name="selectBox1" id="selectBox1" class="selectBox1" onchange="changeValue(this.value);">
+		 		&nbsp;시/도&nbsp;&nbsp;&nbsp;&nbsp;<select name="selectBox1" id="selectBox1" class="selectBox1" onchange="changeValue(this.value);">
 		 			<c:forEach var="vo" items="${searchAddr}" varStatus="i">
 		 				<option value="${vo.sido_name}">${vo.sido_name}</option>
 		 			</c:forEach>
@@ -41,7 +41,7 @@
 		 	</c:if>
 		 </div>
 		 <div id="innerBox2">
-		    &nbsp;&nbsp;도로명&nbsp;&nbsp;<input type="text" name="roadName" class="roadName" size="15">
+		    &nbsp;도로명&nbsp;&nbsp;<input type="text" name="roadName" class="roadName" size="15">
 		    &nbsp;&nbsp;&nbsp;건물번호&nbsp;&nbsp;<input type="text" name="buildingBonbun" class="buildingBonbun" size="5"> - 
 		    <input type="text" name="buildingBonbun" class="buildingBubun" size="5">
 		    <button type="button" class="searchBtn">검색</button>

@@ -56,23 +56,23 @@
 }
 
 #innerBox3 {
-	margin : 10px 0px 0px 14px;
+	margin : 10px 0px 0px 7px;
 }
 
 .selectBox1 {
-	width : 142px;
+	width : 148px;
 	height : 30px;
 	font-size : 18px;
 }
 
 .selectBox2 {
-	width : 140px;
+	width : 143px;
 	height : 30px;
 	font-size : 18px;
 }
 
 .roadName {
-	width : 138px;
+	width : 143px;
 	height : 20px;
 	font-size : 15px;
 }
@@ -91,14 +91,14 @@
 }
 
 .buildingName {
-	width : 400px;
+	width : 412px;
 	height : 20px;
 	font-size: 15px;
-	margin : 0px 0px 0px 3px;
+	margin : 0px 0px 0px 0px;
 }
 
 .searchBtn {
-	margin : 0px 0px 0px 20px;
+	margin : 0px 0px 0px 18px;
 	width : 70px;
 	height : 30px;
 	background-color: #2C6F91;
