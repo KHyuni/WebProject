@@ -6,12 +6,13 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<link rel="stylesheet" type="text/css" href="css/memberList.css"/>
 <title></title>
 </head>
 <body>
 	<div>
 		<table>
-			<tr>
+			<tr class="memberListTitle">
 				<td>회원번호</td>
 				<td>아이디</td>
 				<td>이름</td>
@@ -22,7 +23,7 @@
 				<td>가입일</td>
 			</tr>
 			<c:forEach items="${memberList}" var="vo">
-			<tr>
+			<tr class="memberListData">
 				<td>${vo.userNo}</td>
 				<td>${vo.userId}</td>
 				<td>${vo.userName}</td>

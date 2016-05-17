@@ -3,16 +3,16 @@ jQuery(function($){
 	var re_id1 = /[\s,!,@,#,$,%,^,&,*,?,_,~]/gi;	//아이디 특수 문자 불가
 	var re_pw = /([a-zA-Z0-9].*[!,@,#,$,%,^,&,*,?,_,~])|([!,@,#,$,%,^,&,*,?,_,~].*[a-zA-Z0-9])/gi;	//비밀번호 영문,특수문자 조합
 	var re_email = /^[0-9a-zA-Z]([-_\.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_\.]?[0-9a-zA-Z])*\.[a-zA-Z]{2,3}$/i; // 이메일 검사식
-	var form = $('.frm');
-	var userId = $('.userId');
-	var userPwd = $('.userPwd');
-	var userPwd1 = $('.userPwd1');
-	var userName = $('.userName');
+	var form = $('#frm');
+	var userId = $('#userId');
+	var userPwd = $('#userPwd');
+	var userPwd1 = $('#userPwd1');
+	var userName = $('#userName');
 	var userGender = $("input:radio[name='userGender']:radio[value='남자']").attr("checked",true);
-	var userAddr1 = $('.userAddr1');
-	var userAddr2 = $('.userAddr2');
-	var userPhone = $('.userPhone');
-	var userEmail = $('.userEmail');
+	var userAddr1 = $('#userAddr1');
+	var userAddr2 = $('#userAddr2');
+	var userPhone = $('#userPhone');
+	var userEmail = $('#userEmail');
 	
 	
 	$('#userId').blur(function(){

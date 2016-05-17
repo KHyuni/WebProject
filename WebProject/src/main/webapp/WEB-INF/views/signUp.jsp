@@ -13,7 +13,7 @@
 <body>
 <div id="signUpForm">
 	<h1>회원 가입 페이지</h1>
-	<form action="checkInfo" method="post" class="frm">
+	<form action="checkInfo" method="post" id="frm">
 		<table>
 			<tr>
 				<td>아이디 : </td>

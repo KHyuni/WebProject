@@ -14,7 +14,7 @@ import com.project.web.Util.Constant;
 import com.project.web.VO.WebAddrVO;
 import com.project.web.VO.WebVO;
 
-public class WebDAO {
+public class WebDAO implements WebDAOImpl{
 
 	JdbcTemplate template = null;
 	
@@ -46,27 +46,25 @@ public class WebDAO {
 			});
 			
 		}
-		
+
 	public ArrayList<WebVO> memberList(){
 		String query = "select userNo, userId, userName, userAddr1, userAddr2, userPhone, userEmail, regdate from user_tb order by userNo asc";
 		return (ArrayList<WebVO>) template.query(query, new BeanPropertyRowMapper<WebVO>(WebVO.class));
 	}
 	
-	public boolean checkId(String userId){
-		
-		System.out.println("checkId() ===========> userId =====> "+userId);
-		
+
+	public boolean checkId(String userId){		
 		boolean result = false;		
-		
+
 		Integer cnt = template.queryForObject(
 			    "SELECT count(*) FROM user_tb WHERE userId = ?", Integer.class, userId);
 		
-		System.out.println("checkId() ===========> count =====> "+cnt);
 		if(cnt > 0){
 			result = true;
 		}
 		return result;
 	}
+	
 	
 	public ArrayList<WebAddrVO> findSido(){
 		String query = "SELECT sido_name FROM BUILDING_INFO bi GROUP BY sido_name HAVING COUNT(*) > 1 ORDER BY sido_name";

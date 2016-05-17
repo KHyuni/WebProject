@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.project.web.DAO.WebDAOImpl">
+	<select id="memberList" resultType="com.project.web.VO.WebVO">
+		SELECT userId, userNo, userName, userAddr1, userAddr2, userPhone, userEmail, regdate 
+		FROM user_tb
+	</select>
+</mapper>
+
