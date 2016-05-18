@@ -1,5 +1,7 @@
 package com.project.web.Controller;
 
+import java.sql.Timestamp;
+
 import javax.servlet.http.HttpServletRequest;
 
 import org.apache.ibatis.session.SqlSession;
@@ -11,19 +13,15 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.project.web.DAO.WebDAOImpl;
-import com.project.web.Service.WebAddrPopupService;
-import com.project.web.Service.WebMemberListService;
-import com.project.web.Service.WebResultService;
 import com.project.web.Service.WebServiceImpl;
 import com.project.web.Util.Constant;
 import com.project.web.VO.WebVO;
 
 @Controller
 public class WebController {
-	
-	WebServiceImpl serviceImpl = null;
-	
+
 	public JdbcTemplate template;
+	WebServiceImpl serviceImpl = null;
 	
 	@Autowired
 	private SqlSession sqlSession;
@@ -60,17 +58,29 @@ public class WebController {
 		return "/checkInfo";
 	}
 	
+	
 	@RequestMapping(value = "/result")
 	public String result(HttpServletRequest request, Model model){
-		System.out.println("result()"+"\n");
+	
+		String userId = request.getParameter("userId");
+		String userPwd = request.getParameter("userPwd");
+		String userName = request.getParameter("userName");
+		String userGender = request.getParameter("userGender");
+		String userAddr1 = request.getParameter("userAddr1");
+		String userAddr2 = request.getParameter("userAddr2");
+		String userPhone = request.getParameter("userPhone");
+		String userEmail = request.getParameter("userEmail");
+		Timestamp regDate = new Timestamp(System.currentTimeMillis()); 
 		
-		//System.out.println("signUp()"+"\n");
-		model.addAttribute("request", request);
+		if(userGender.equals("남자")){
+			userGender = "M";
+		}else{
+			userGender = "F";
+		}
 		
-		System.out.println("userId ==========> "+request.getParameter("userId"));
+		WebDAOImpl dao = sqlSession.getMapper(WebDAOImpl.class);
+		dao.signUp(userId,userPwd,userName,userGender,userAddr1,userAddr2,userPhone,userEmail,regDate);
 		
-		serviceImpl = new WebResultService();
-		serviceImpl.execute(model);
 		
 		return "/result";
 	}
@@ -79,16 +89,6 @@ public class WebController {
 	public String adminPage(){
 		return "/adminPage";
 	}
-	
-/*	@RequestMapping(value = "/memberList")
-	public String memberList(Model model){
-		System.out.println("memberList()");
-		
-		serviceImpl = new WebMemberListService();
-		serviceImpl.execute(model);
-		
-		return "/memberList";
-	}	*/
 	
 	@RequestMapping(value = "/memberList")
 	public String memberList(Model model){
@@ -103,9 +103,8 @@ public class WebController {
 	@RequestMapping(value = "/addrPopup")
 	public String resultAddr(Model model){
 		System.out.println("addrPopup()");
-		
-		serviceImpl = new WebAddrPopupService();
-		serviceImpl.execute(model);
+		WebDAOImpl dao = sqlSession.getMapper(WebDAOImpl.class);
+		model.addAttribute("searchAddr", dao.findSido());
 		
 		return "/addrPopup";
 	}

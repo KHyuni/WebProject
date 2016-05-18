@@ -21,9 +21,9 @@ public class WebDAO implements WebDAOImpl{
 	public WebDAO() {
 		template = Constant.template;
 	}
+	@Override
+	public void signUp(final String userId, final String userPwd, final String userName, final String userGender, final String userAddr1, final String userAddr2, final String userPhone, final String userEmail,final Timestamp regDate){
 	
-	public void signUp(final String userId, final String userPwd, final String userName, final String userGender, final String userAddr1, final String userAddr2, final String userPhone, final String userEmail, final Timestamp regDate){
-			
 			template.update(new PreparedStatementCreator() {
 				
 				@Override
@@ -67,9 +67,10 @@ public class WebDAO implements WebDAOImpl{
 	
 	
 	public ArrayList<WebAddrVO> findSido(){
-		String query = "SELECT sido_name FROM BUILDING_INFO bi GROUP BY sido_name HAVING COUNT(*) > 1 ORDER BY sido_name";
+		String query = "SELECT /*+USE_HASH_AGGREGATION*/ sido_name FROM SIGUNGU_CODE GROUP BY sido_name HAVING COUNT(*) >= 1 ORDER BY sido_name";
 		return (ArrayList<WebAddrVO>) template.query(query, new BeanPropertyRowMapper<WebAddrVO>(WebAddrVO.class));
 	}
+
 
 /*	public ArrayList<WebAddrVO> findSigunGu(){
 

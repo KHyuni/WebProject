@@ -7,7 +7,7 @@ import org.springframework.ui.Model;
 import com.project.web.DAO.WebDAO;
 import com.project.web.VO.WebAddrVO;
 
-public class WebAddrPopupService implements WebServiceImpl{
+public class WebAddrPopupService {/*implements WebServiceImpl{
 
 	@Override
 	public void execute(Model model) {
@@ -19,6 +19,6 @@ public class WebAddrPopupService implements WebServiceImpl{
 		int rowNum = vo.size();
 		model.addAttribute("searchAddr", vo);
 		model.addAttribute("totalCnt", rowNum);
-	}
+	}*/
 
 }

@@ -13,7 +13,7 @@ public class WebAddrVO {
 	private String zipcode;
 	private String sigungu_building_name;
 	private int rowNum;
-	
+	 
 	public String getSido_name() {
 		return sido_name;
 	}

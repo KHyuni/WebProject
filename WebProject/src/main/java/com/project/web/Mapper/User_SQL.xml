@@ -2,9 +2,25 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="com.project.web.DAO.WebDAOImpl">
+	<insert id="signUp">
+		<![CDATA[
+			INSERT INTO USER_TB (userNo, userId, userPwd, userName, userGender, userAddr1, userAddr2, userPhone, userEmail, regDate) 
+				VALUES (seq_user_tb.nextval, #{param1}, #{param2}, #{param3}, #{param4}, #{param5}, #{param6}, #{param7}, #{param8}, #{param9})
+		]]>
+	</insert>
+	
 	<select id="memberList" resultType="com.project.web.VO.WebVO">
-		SELECT userId, userNo, userName, userAddr1, userAddr2, userPhone, userEmail, regdate 
-		FROM user_tb
+		<![CDATA[
+			SELECT userId, userNo, userName, userAddr1, userAddr2, userPhone, userEmail, regdate 
+			    FROM user_tb
+		]]>
+	</select>
+	
+	<select id="findSido" resultType="com.project.web.VO.WebAddrVO">
+		<![CDATA[
+			SELECT /*+USE_HASH_AGGREGATION*/ sido_name
+				FROM SIGUNGU_CODE GROUP BY sido_name HAVING COUNT(*) >= 1 ORDER BY sido_name
+		]]>
 	</select>
 </mapper>
 

@@ -4,7 +4,7 @@ window.onload = function(){
 	
 	function changeValue(val){
 		var sido_name = $("#selectBox1 option:selected").val();
-		alert(sido_name);
+/*		alert(sido_name);*/
 	}
 }
 
