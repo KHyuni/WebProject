@@ -3,9 +3,11 @@ window.onload = function(){
 	changeValue();
 	
 	function changeValue(val){
-		var sido_name = $("#selectBox1 option:selected").val();
-/*		alert(sido_name);*/
+		var sido_name = $("select[name=selectBox1]").val();
+		
+		
 	}
+
 }
 
 	function checkBtn(checkForSearch){

@@ -8,7 +8,7 @@
 	PreparedStatement pstmt = null;
 	ResultSet rs = null;
 	
-	String query = "select sigungu_name from building_info where sido_name = ?";
+	String query = "select sigungu_name from SIGUNGU_CODE where sido_name = ?";
 %>
 
 <%
@@ -22,7 +22,7 @@
 %>
 <tr>
 	<td>
-		시/도 : <%=rs.getString("sido_name")%>
+		시/도 : <%=rs.getString("sigungu_name")%>
 	</td>
 </tr>
 
