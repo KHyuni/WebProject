@@ -20,9 +20,9 @@
 		&nbsp;&nbsp;<input type="radio" name="checkForSearch" id="checkForSearch1" checked="checked" value="roadSearch" onclick="checkBtn(1);"> 도로명주소 검색
 		<input type="radio" name="checkForSearch" id="checkForSearch2" value="buildSearch" onclick="checkBtn(2);"> 건물명 검색
 	</div>
-<%-- 	 <div class="totalCnt">
+	 <div class="totalCnt">
 	 	(총${totalCnt}건)
-	 </div> --%>
+	 </div>
 	<div class="selectBoxArea">
 		 <div class="innerBox1">
 		 	<c:if test="${!empty searchAddr}">
@@ -65,6 +65,7 @@
 			</tr>
 		</table>
 	</div>
+	<div id="dataBind"></div>
 	<div>
 		<p class="notice">※ 상세주소 입력 후 '확인' 버튼을 눌러주세요</p>
 	</div>

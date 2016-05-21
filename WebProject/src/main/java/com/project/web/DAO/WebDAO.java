@@ -72,8 +72,9 @@ public class WebDAO implements WebDAOImpl{
 	}
 
 
-/*	public ArrayList<WebAddrVO> findSigunGu(){
-
-	}*/
+	public String addrSearch(String sido_name){
+		String query = "SELECT sigungu_name FROM SIGUNGU_CODE WHERE sido_name = ?";
+		return template.queryForObject(query, new Object[]{sido_name}, String.class);
+	}
 	
 }

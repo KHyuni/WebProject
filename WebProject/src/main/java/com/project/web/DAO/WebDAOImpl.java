@@ -11,6 +11,7 @@ public interface WebDAOImpl {
 	public void signUp(String userId, String userPwd, String userName, String userGender, String userAddr1, String userAddr2, String userPhone, String userEmail, Timestamp regDate);
 	ArrayList<WebVO> memberList();
 	ArrayList<WebAddrVO> findSido();
+	public String addrSearch(String sido_name);
 
 }
 

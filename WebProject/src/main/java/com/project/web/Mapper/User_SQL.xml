@@ -22,5 +22,11 @@
 				FROM SIGUNGU_CODE GROUP BY sido_name HAVING COUNT(*) >= 1 ORDER BY sido_name
 		]]>
 	</select>
+	
+	<select id="addrSearch" resultType="com.project.web.VO.WebAddrVO">
+		<![CDATA[
+			SELECT sigungu_name FROM SIGUNGU_CODE WHERE sido_name = #{sido_name}
+		]]>
+	</select>
 </mapper>
 

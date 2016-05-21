@@ -104,13 +104,19 @@ public class WebController {
 	public String resultAddr(Model model){
 		System.out.println("addrPopup()");
 		WebDAOImpl dao = sqlSession.getMapper(WebDAOImpl.class);
+		int rowNum = dao.findSido().size();
 		model.addAttribute("searchAddr", dao.findSido());
+		model.addAttribute("totalCnt", rowNum);
 		
 		return "/addrPopup";
 	}
 	
 	@RequestMapping(value = "/addrSearch")
-	public String addrSearch(){
+	public String addrSearch(HttpServletRequest request, Model model){
+		String sido_name = request.getParameter("sido_name");
+		WebDAOImpl dao = sqlSession.getMapper(WebDAOImpl.class);
+		model.addAttribute("searchSigungu", dao.addrSearch(sido_name));
+		
 		return "/addrSearch";
 	}
 	
