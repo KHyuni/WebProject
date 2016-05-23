@@ -20,9 +20,6 @@
 		&nbsp;&nbsp;<input type="radio" name="checkForSearch" id="checkForSearch1" checked="checked" value="roadSearch" onclick="checkBtn(1);"> 도로명주소 검색
 		<input type="radio" name="checkForSearch" id="checkForSearch2" value="buildSearch" onclick="checkBtn(2);"> 건물명 검색
 	</div>
-	 <div class="totalCnt">
-	 	(총${totalCnt}건)
-	 </div>
 	<div class="selectBoxArea">
 		 <div class="innerBox1">
 		 	<c:if test="${!empty searchAddr}">
@@ -33,10 +30,11 @@
 		 			</c:forEach>
 		 		</select>
 		 	</c:if>
-		 	<c:if test="${!empty searchSigungu}">
+		 	<c:if test="${!empty searchAddr}">
 		 		&nbsp;&nbsp;&nbsp;시/군/구&nbsp;&nbsp;&nbsp;<select name="selectBox2" id="selectBox2" class="selectBox2">
+		 				<option value="0">::선택하세요::</option>
 		 			<c:forEach var="vo" items="${searchSigungu}" varStatus="i">
-		 				<option value="${vo.sigungu_name}">${vo.sigungu_name}</option>
+		 			
 		 			</c:forEach>
 		 		</select>
 		 	</c:if>

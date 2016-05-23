@@ -1,27 +1,26 @@
 	
-function changeValue(val){
+function changeValue(){
 		var sido_name = $("select[name=selectBox1]").val();
 		
-		if(sido_name != null || sido_name.equals("")){
-			alert("시/도 : "+sido_name);
+		if(sido_name != null){
 			$.ajax({
 				type : "POST", 
-				url : "/addrSearch",
+				url : "addrSearch",
 				data : {"sido_name":sido_name},
-				success : function(data){
-					alert('success()');
-				/*	$("#selectBox2").each(function(){
-							$("#selectBox2 option:eq(0)").remove();
-					});
-					$("#selectBox2").append("<option value=''>::도시선택::</option>");*/
-					
-/*					for(var idx=0; idx<data.length; idx++){
-						$("#selectBox2").append("<option value=""+data")
-					}*/
-				}
+				dataType : "html", 
+				error : function(request, status, error) {
+			         alert("에러!!");
+			         alert(request.status);
+			         return;
+			      }
+			      , success : function(response, status, request) {
+			  		 var sigungu = request.responseText;
+			    	 $("#selectBox2").html(sigungu);
+			      }
 			});
 		}
 	}
+
 
 function checkBtn(checkForSearch){
 		if(checkForSearch == "1"){
