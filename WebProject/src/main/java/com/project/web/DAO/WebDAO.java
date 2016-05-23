@@ -72,9 +72,9 @@ public class WebDAO implements WebDAOImpl{
 	}
 
 
-	public String addrSearch(String sido_name){
+	public ArrayList<WebAddrVO> addrSearch(String sido_name){
 		String query = "SELECT sigungu_name FROM SIGUNGU_CODE WHERE sido_name = ?";
-		return template.queryForObject(query, new Object[]{sido_name}, String.class);
+		return (ArrayList<WebAddrVO>) template.query(query, new Object[]{sido_name}, new BeanPropertyRowMapper<WebAddrVO>(WebAddrVO.class));
 	}
 	
 }

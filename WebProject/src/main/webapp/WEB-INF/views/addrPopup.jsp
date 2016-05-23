@@ -26,13 +26,14 @@
 	<div class="selectBoxArea">
 		 <div class="innerBox1">
 		 	<c:if test="${!empty searchAddr}">
-		 		&nbsp;시/도&nbsp;&nbsp;&nbsp;&nbsp;<select name="selectBox1" id="selectBox1" class="selectBox1" onchange="changeValue(this.value);">
+		 		&nbsp;시/도&nbsp;&nbsp;&nbsp;&nbsp;<select name="selectBox1" id="selectBox1" class="selectBox1" onchange="changeValue();">
+		 			    <option value="0">::선택하세요::</option>
 		 			<c:forEach var="vo" items="${searchAddr}" varStatus="i">
 		 				<option value="${vo.sido_name}">${vo.sido_name}</option>
 		 			</c:forEach>
 		 		</select>
 		 	</c:if>
-		 	<c:if test="${!empty searchAddr}">
+		 	<c:if test="${!empty searchSigungu}">
 		 		&nbsp;&nbsp;&nbsp;시/군/구&nbsp;&nbsp;&nbsp;<select name="selectBox2" id="selectBox2" class="selectBox2">
 		 			<c:forEach var="vo" items="${searchSigungu}" varStatus="i">
 		 				<option value="${vo.sigungu_name}">${vo.sigungu_name}</option>

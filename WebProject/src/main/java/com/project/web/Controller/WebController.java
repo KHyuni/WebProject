@@ -113,7 +113,9 @@ public class WebController {
 	
 	@RequestMapping(value = "/addrSearch")
 	public String addrSearch(HttpServletRequest request, Model model){
-		String sido_name = request.getParameter("sido_name");
+//		String sido_name = request.getParameter("sido_name");
+		String sido_name = "서울특별시";
+		System.out.println("addrSearch() 호출 = "+sido_name);
 		WebDAOImpl dao = sqlSession.getMapper(WebDAOImpl.class);
 		model.addAttribute("searchSigungu", dao.addrSearch(sido_name));
 		
