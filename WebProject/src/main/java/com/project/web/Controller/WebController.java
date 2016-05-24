@@ -133,7 +133,9 @@ public class WebController {
 		
 		WebDAOImpl dao = sqlSession.getMapper(WebDAOImpl.class);
 		if(bonbun == null || bonbun.equals("")){
-			model.addAttribute("searchRoadName", dao.addrSearch2(road_name));	
+			model.addAttribute("searchRoadName", dao.addrSearch2(sido_name, sigungu_name, road_name));
+			int rowNum = dao.addrSearch2(sido_name, sigungu_name, road_name).size();
+			model.addAttribute("rowNum", rowNum);
 		}else{
 			int building_bonbun = Integer.parseInt(bonbun);
 			int building_bubun = Integer.parseInt(bubun);

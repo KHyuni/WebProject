@@ -83,10 +83,10 @@ public class WebDAO implements WebDAOImpl{
 		return (ArrayList<WebAddrVO>) template.query(query, new Object[]{sido_name, sigungu_name, road_name, building_bonbun, building_bubun}, new BeanPropertyRowMapper<WebAddrVO>(WebAddrVO.class));
 	}
 	
-	public ArrayList<WebAddrVO> addrSearch2(String road_name){
+	public ArrayList<WebAddrVO> addrSearch2(String sido_name, String sigungu_name, String road_name){
 		String query = "SELECT a.sido_name, a.sigungu_name, b.road_name, b.zipcode, b.building_bonbun, b.building_bubun, b.sigungu_building_name "
-				+ "FROM SIGUNGU_CODE a, BUILDING_INFO b WHERE a.sido_name = b.sido_name AND a.sigungu_name = b.sigungu_name AND b.road_name = ?";
-		return (ArrayList<WebAddrVO>) template.query(query, new Object[]{road_name}, new BeanPropertyRowMapper<WebAddrVO>(WebAddrVO.class));
+				+ "SIGUNGU_CODE a RIGHT OUTER JOIN BUILDING_INFO b on a.sido_name=b.sido_name and a.sigungu_name=b.sigungu_name WHERE b.sido_name = ? AND b.sigungu_name = ? AND b.road_name = ?";
+		return (ArrayList<WebAddrVO>) template.query(query, new Object[]{sido_name, sigungu_name, road_name}, new BeanPropertyRowMapper<WebAddrVO>(WebAddrVO.class));
 	}
 	
 	public ArrayList<WebAddrVO> addrSearch3(String sido_name,String sigungu_name, String sigungu_building_name){

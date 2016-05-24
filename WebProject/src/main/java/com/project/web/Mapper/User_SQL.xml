@@ -41,8 +41,8 @@
 	<select id="addrSearch2" resultType="com.project.web.VO.WebAddrVO">
 		<![CDATA[
 			SELECT a.sido_name, a.sigungu_name, b.road_name, b.zipcode, b.building_bonbun, b.building_bubun, b.sigungu_building_name 
-			FROM SIGUNGU_CODE a, BUILDING_INFO b 
-			WHERE a.sido_name = b.sido_name AND a.sigungu_name = b.sigungu_name AND b.road_name = #{param1}
+			FROM SIGUNGU_CODE a RIGHT OUTER JOIN BUILDING_INFO b on a.sido_name=b.sido_name and a.sigungu_name=b.sigungu_name  
+			WHERE b.sido_name = #{param1} AND b.sigungu_name = #{param2} AND b.road_name = #{param3}
 		]]>
 	</select>
 	
