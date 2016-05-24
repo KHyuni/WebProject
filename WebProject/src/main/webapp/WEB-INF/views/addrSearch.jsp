@@ -8,10 +8,6 @@
 	 			</c:forEach>
 	 	</c:if>
 </div>
-<script>
-	
-</script>
-
 
 <div>
 ${totalCnt}

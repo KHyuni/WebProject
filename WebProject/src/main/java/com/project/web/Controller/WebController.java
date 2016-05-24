@@ -11,7 +11,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-
 import com.project.web.DAO.WebDAOImpl;
 import com.project.web.Service.WebServiceImpl;
 import com.project.web.Util.Constant;
@@ -113,14 +112,44 @@ public class WebController {
 	@RequestMapping(value = "/addrSearch")
 	public String addrSearch(HttpServletRequest request, Model model){
 		String sido_name = request.getParameter("sido_name");
-		System.out.println("addrSearch() 호출 = "+sido_name);
 		WebDAOImpl dao = sqlSession.getMapper(WebDAOImpl.class);
-		int rowNum = dao.addrSearch(sido_name).size();
-		System.out.println("addrSearch 건수 = "+rowNum);
+		//int rowNum = dao.addrSearch(sido_name).size();
 		model.addAttribute("searchSigungu", dao.addrSearch(sido_name));
-		model.addAttribute("totalCnt", rowNum);
+		//model.addAttribute("totalCnt", rowNum);
 		
 		return "/addrSearch";
 	}
 	
+	@RequestMapping(value = "/addrSearch1")
+	public String addrSearch1(HttpServletRequest request, Model model){
+		//도로명 주소 검색
+		String sido_name = request.getParameter("sido_name");
+		String sigungu_name = request.getParameter("sigungu_name");
+		String road_name = request.getParameter("road_name");
+		String bonbun = request.getParameter("building_bonbun");
+		String bubun = request.getParameter("building_bubun");
+		
+		System.out.println("addrSearch1() 실행");
+		
+		WebDAOImpl dao = sqlSession.getMapper(WebDAOImpl.class);
+		if(bonbun == null || bonbun.equals("")){
+			model.addAttribute("searchRoadName", dao.addrSearch2(road_name));	
+		}else{
+			int building_bonbun = Integer.parseInt(bonbun);
+			int building_bubun = Integer.parseInt(bubun);
+			model.addAttribute("searchRoadName", dao.addrSearch1(sido_name, sigungu_name, road_name, building_bonbun, building_bubun));
+		}
+		return "/addrSearch1";
+	}
+	
+	@RequestMapping(value = "/addrSearch3")
+	public String addrSearch2(HttpServletRequest request, Model model){
+		//빌딩이름 검색
+		String sido_name = request.getParameter("sido_name");
+		String sigungu_name = request.getParameter("sigungu_name");
+		String sigungu_building_name = request.getParameter("sigungu_building_name");
+		WebDAOImpl dao = sqlSession.getMapper(WebDAOImpl.class);
+		model.addAttribute("searchBuildingName", dao.addrSearch3(sido_name, sigungu_name, sigungu_building_name));
+		return "/addrSearch3";
+	}
 }

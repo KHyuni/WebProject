@@ -24,7 +24,7 @@
 		 <div class="innerBox1">
 		 	<c:if test="${!empty searchAddr}">
 		 		&nbsp;시/도&nbsp;&nbsp;&nbsp;&nbsp;<select name="selectBox1" id="selectBox1" class="selectBox1" onchange="changeValue();">
-		 			    <option value="0">::선택하세요::</option>
+		 			    <option value="0">선택하세요</option>
 		 			<c:forEach var="vo" items="${searchAddr}" varStatus="i">
 		 				<option value="${vo.sido_name}">${vo.sido_name}</option>
 		 			</c:forEach>
@@ -32,21 +32,19 @@
 		 	</c:if>
 		 	<c:if test="${!empty searchAddr}">
 		 		&nbsp;&nbsp;&nbsp;시/군/구&nbsp;&nbsp;&nbsp;<select name="selectBox2" id="selectBox2" class="selectBox2">
-		 				<option value="0">::선택하세요::</option>
-		 			<c:forEach var="vo" items="${searchSigungu}" varStatus="i">
-		 			
+		 			<c:forEach var="vo" items="${searchSigungu}" varStatus="i">		 			
 		 			</c:forEach>
 		 		</select>
 		 	</c:if>
 		 </div>
 		 <div id="innerBox2">
-		    &nbsp;도로명&nbsp;&nbsp;<input type="text" name="roadName" class="roadName" size="15">
-		    &nbsp;&nbsp;&nbsp;건물번호&nbsp;&nbsp;<input type="text" name="buildingBonbun" class="buildingBonbun" size="5"> - 
-		    <input type="text" name="buildingBonbun" class="buildingBubun" size="5">
-		    <button type="button" class="searchBtn">검색</button>
+		    &nbsp;도로명&nbsp;&nbsp;<input type="text" name="roadName" id="roadName" class="roadName" size="15">
+		    &nbsp;&nbsp;&nbsp;건물번호&nbsp;&nbsp;<input type="text" name="buildingBonbun" id="buildingBonbun" class="buildingBonbun" size="5"> - 
+		    <input type="text" name="buildingBonbun" id="buildingBubun" class="buildingBubun" size="5">
+		    <button type="button" class="searchBtn" onclick="searchBtn();">검색</button>
 		 </div>
 		 <div id="innerBox3" style="display:none;">
-		    건물명&nbsp;&nbsp;<input type="text" name="buildingName" class="buildingName" size="40"/>
+		    건물명&nbsp;&nbsp;<input type="text" name="buildingName" id="buildingName" class="buildingName" size="40"/>
 		    <button type="button" class="searchBtn">검색</button>
 		 </div>
 	</div>
@@ -60,7 +58,8 @@
 				<td class="addressTitle">주소</td>
 			</tr>
 			<tr class="addrAreaData">
-				<td>Data Binding Point</td>
+				<td id="zipcode"></td>
+				<td id="fullAddress"></td>
 			</tr>
 		</table>
 	</div>

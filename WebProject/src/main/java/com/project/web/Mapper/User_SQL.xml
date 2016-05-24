@@ -25,7 +25,31 @@
 	
 	<select id="addrSearch" resultType="com.project.web.VO.WebAddrVO">
 		<![CDATA[
-			SELECT sigungu_name FROM SIGUNGU_CODE WHERE sido_name = #{sido_name}
+			SELECT sigungu_name FROM SIGUNGU_CODE WHERE sido_name = #{sido_name} ORDER BY sigungu_name
+		]]>
+	</select>
+	
+	<select id="addrSearch1" resultType="com.project.web.VO.WebAddrVO">
+		<![CDATA[
+			SELECT a.sido_name, a.sigungu_name, b.road_name, b.zipcode, b.building_bonbun, b.building_bubun, b.sigungu_building_name 
+			FROM SIGUNGU_CODE a, BUILDING_INFO b 
+			WHERE a.sido_name = #{param1} AND a.sigungu_name = #{param2} AND b.road_name = #{param3} 
+			AND b.building_bonbun = #{param4} AND b.building_bubun = #{param5}
+		]]>
+	</select>
+	
+	<select id="addrSearch2" resultType="com.project.web.VO.WebAddrVO">
+		<![CDATA[
+			SELECT a.sido_name, a.sigungu_name, b.road_name, b.zipcode, b.building_bonbun, b.building_bubun, b.sigungu_building_name 
+			FROM SIGUNGU_CODE a, BUILDING_INFO b 
+			WHERE a.sido_name = b.sido_name AND a.sigungu_name = b.sigungu_name AND b.road_name = #{param1}
+		]]>
+	</select>
+	
+	<select id="addrSearch3" resultType="com.project.web.VO.WebAddrVO">
+		<![CDATA[
+			SELECT a.sido_name, a.sigungu_name, b.road_name, b.zipcode, b.building_bonbun, b.building_bubun, b.sigungu_building_name 
+			FROM SIGUNGU_CODE a, BUILDING_INFO b WHERE a.SIDO_NAME = b.SIDO_NAME AND a.SIGUNGU_NAME = b.SIGUNGU_NAME AND AND b.SIGUNGU_BUILDING_NAME = #{sigungu_building_name}
 		]]>
 	</select>
 </mapper>

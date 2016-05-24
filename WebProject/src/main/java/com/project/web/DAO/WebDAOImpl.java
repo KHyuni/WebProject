@@ -12,6 +12,9 @@ public interface WebDAOImpl {
 	ArrayList<WebVO> memberList();
 	ArrayList<WebAddrVO> findSido();
 	ArrayList<WebAddrVO> addrSearch(String sido_name);
+	ArrayList<WebAddrVO> addrSearch1(String sido_name,String sigungu_name, String road_name, int building_bonbun, int building_bubun);
+	ArrayList<WebAddrVO> addrSearch2(String road_name);
+	ArrayList<WebAddrVO> addrSearch3(String sido_name,String sigungu_name, String sigungu_building_name);
 
 }
 

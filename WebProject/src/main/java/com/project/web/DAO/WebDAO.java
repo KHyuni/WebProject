@@ -77,4 +77,21 @@ public class WebDAO implements WebDAOImpl{
 		return (ArrayList<WebAddrVO>) template.query(query, new Object[]{sido_name}, new BeanPropertyRowMapper<WebAddrVO>(WebAddrVO.class));
 	}
 	
+	public ArrayList<WebAddrVO> addrSearch1(String sido_name, String sigungu_name, String road_name, int building_bonbun, int building_bubun){
+		String query = "SELECT a.sido_name, a.sigungu_name, b.road_name, b.zipcode, b.building_bonbun, b.building_bubun, b.sigungu_building_name "
+				+ "FROM SIGUNGU_CODE a, BUILDING_INFO b WHERE a.sido_name = ? AND a.sigungu_name = ? AND b.road_name = ? AND b.building_bonbun = ? AND b.building_bubun = ?";
+		return (ArrayList<WebAddrVO>) template.query(query, new Object[]{sido_name, sigungu_name, road_name, building_bonbun, building_bubun}, new BeanPropertyRowMapper<WebAddrVO>(WebAddrVO.class));
+	}
+	
+	public ArrayList<WebAddrVO> addrSearch2(String road_name){
+		String query = "SELECT a.sido_name, a.sigungu_name, b.road_name, b.zipcode, b.building_bonbun, b.building_bubun, b.sigungu_building_name "
+				+ "FROM SIGUNGU_CODE a, BUILDING_INFO b WHERE a.sido_name = b.sido_name AND a.sigungu_name = b.sigungu_name AND b.road_name = ?";
+		return (ArrayList<WebAddrVO>) template.query(query, new Object[]{road_name}, new BeanPropertyRowMapper<WebAddrVO>(WebAddrVO.class));
+	}
+	
+	public ArrayList<WebAddrVO> addrSearch3(String sido_name,String sigungu_name, String sigungu_building_name){
+		String query = "SELECT a.sido_name, a.sigungu_name, b.road_name, b.zipcode, b.building_bonbun, b.building_bubun, b.sigungu_building_name FROM SIGUNGU_CODE a, BUILDING_INFO b WHERE a.SIDO_NAME = b.SIDO_NAME AND a.SIGUNGU_NAME = b.SIGUNGU_NAME AND AND b.SIGUNGU_BUILDING_NAME = ?";
+		return (ArrayList<WebAddrVO>) template.query(query, new Object[]{sido_name, sigungu_name, sigungu_building_name}, new BeanPropertyRowMapper<WebAddrVO>(WebAddrVO.class));
+	}
+	
 }

@@ -127,14 +127,15 @@
 }
 
 .zipcodeTitle {
-	padding : 0px 0px 0px 15px;
-	width : 102px;
+	padding : 0px 0px 0px 4px;
+	width : 108px;
 	height : 25px;
+	text-align: center;
 }
 
 .addressTitle {
 	padding : 0px 0px 0px 220px;
-	width : 496px;
+	width : 490px;
 	height : 25px;
 }
 
