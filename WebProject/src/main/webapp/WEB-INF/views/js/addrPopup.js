@@ -29,48 +29,55 @@ function searchBtn(){
 	var bubun = $("#buildingBubun").val();
 	var buildingName = $("#buildingName").val();
 	var zipcode = $("#zipcode").val();
-
-	if(buildingName == null || buildingName == ""){
-		if(bonbun != null){
-			$.ajax({
-				type:"POST", 
-				url:"addrSearch1",
-				data:{"sido_name":sido_name,"sigungu_name":sigungu_name,"road_name":road_name,"buildingName":buildingName,"zipcode":zipcode},
-				dataType:"html",
-				error:function(){
-					alert("에러!!");
-				},
-				success:function(data){
-						$("#fullAddress").html(data);
-						//해당 지역에 데이터가 없을 경우 처리 필요.
-						//서초구=서초대로(O), 마포구=서초대로(X) 일 경우 기존 검색 되어진 리스트 화면에서 삭제
-				}
-			});
+	
+	if(buildingName == null || buildingName == ""){	//도로명주소 검색
+		if(road_name == null || road_name == ""){
+			alert('시/도, 시/군/구, 도로명 또는 건물명은 필수 입니다.');
+			return;
 		}else{
-			$.ajax({
-				type:"POST", 
-				url:"",
-				data:{},
-				dataType:"html",
-				error:function(){
-					
-				},
-				success:function(){
-					
-				}
-			});
-	    }
-	}else{
+			if(bonbun == null || bonbun == ""){	//도로명주소[지번이 없을 경우]	
+				alert("지번 없을 경우 : "+bonbun + " " +bubun);
+				$.ajax({
+					type:"POST", 
+					url:"addrSearch1",
+					data:{"sido_name":sido_name,"sigungu_name":sigungu_name,"road_name":road_name,"bonbun":bonbun,"bubun":bubun,"buildingName":buildingName,"zipcode":zipcode},
+					dataType:"html",
+					error:function(){
+						alert("에러!!");
+					},
+					success:function(data){
+						$("#fullAddress").html(data);
+					}
+				});
+			}else{			    //도로명주소[지번이 있을 경우]
+				alert("지번 있을 경우 : "+bonbun + " " +bubun);
+				$.ajax({
+					type:"POST", 
+					url:"addrSearch1",
+					data:{"sido_name":sido_name,"sigungu_name":sigungu_name,"road_name":road_name,"bonbun":bonbun,"bubun":bubun,"buildingName":buildingName,"zipcode":zipcode},
+					dataType:"html",
+					error:function(){
+						alert("에러!!");
+					},
+					success:function(data){
+						$("#fullAddress").html(data);
+					}
+				});	
+		    }
+		}
+	}else if(buildingName != null){
+		alert("건물명으로 검색~!!");//건물명 검색
 		$.ajax({
 			type:"POST", 
-			url:"",
-			data:{},
+			url:"addrSearch3",
+			data:{"sido_name":sido_name,"sigungu_name":sigungu_name,"buildingName":buildingName},
 			dataType:"html",
 			error:function(){
-				
+				alert("에러~!!")
 			},
-			success:function(){
-				
+			success:function(data){
+				alert('성공');
+				$("#fullAddress").html(data);
 			}
 		});
 	}

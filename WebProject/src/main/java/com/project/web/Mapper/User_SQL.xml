@@ -32,24 +32,25 @@
 	<select id="addrSearch1" resultType="com.project.web.VO.WebAddrVO">
 		<![CDATA[
 			SELECT a.sido_name, a.sigungu_name, b.road_name, b.zipcode, b.building_bonbun, b.building_bubun, b.sigungu_building_name 
-			FROM SIGUNGU_CODE a, BUILDING_INFO b 
-			WHERE a.sido_name = #{param1} AND a.sigungu_name = #{param2} AND b.road_name = #{param3} 
-			AND b.building_bonbun = #{param4} AND b.building_bubun = #{param5}
+			FROM SIGUNGU_CODE a RIGHT OUTER JOIN BUILDING_INFO b on a.sido_name=b.sido_name and a.sigungu_name=b.sigungu_name  
+			WHERE b.sido_name = #{param1} AND b.sigungu_name = #{param2} AND b.road_name = #{param3}
 		]]>
 	</select>
 	
 	<select id="addrSearch2" resultType="com.project.web.VO.WebAddrVO">
 		<![CDATA[
 			SELECT a.sido_name, a.sigungu_name, b.road_name, b.zipcode, b.building_bonbun, b.building_bubun, b.sigungu_building_name 
-			FROM SIGUNGU_CODE a RIGHT OUTER JOIN BUILDING_INFO b on a.sido_name=b.sido_name and a.sigungu_name=b.sigungu_name  
-			WHERE b.sido_name = #{param1} AND b.sigungu_name = #{param2} AND b.road_name = #{param3}
+			FROM SIGUNGU_CODE a RIGHT OUTER JOIN BUILDING_INFO b on a.sido_name=b.sido_name and a.sigungu_name=b.sigungu_name 
+			WHERE b.sido_name = #{param1} AND b.sigungu_name = #{param2} AND b.road_name = #{param3} 
+			AND b.building_bonbun = #{param4} AND b.building_bubun = #{param5}
 		]]>
 	</select>
 	
 	<select id="addrSearch3" resultType="com.project.web.VO.WebAddrVO">
 		<![CDATA[
 			SELECT a.sido_name, a.sigungu_name, b.road_name, b.zipcode, b.building_bonbun, b.building_bubun, b.sigungu_building_name 
-			FROM SIGUNGU_CODE a, BUILDING_INFO b WHERE a.SIDO_NAME = b.SIDO_NAME AND a.SIGUNGU_NAME = b.SIGUNGU_NAME AND AND b.SIGUNGU_BUILDING_NAME = #{sigungu_building_name}
+			FROM SIGUNGU_CODE a RIGHT OUTER JOIN BUILDING_INFO b on a.sido_name=b.sido_name and a.sigungu_name=b.sigungu_name 
+			WHERE b.sido_name = #{param1} and b.sigungu_name = #{param2} and b.sigungu_building_name like '%${param3}%'
 		]]>
 	</select>
 </mapper>

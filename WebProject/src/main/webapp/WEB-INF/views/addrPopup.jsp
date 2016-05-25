@@ -17,8 +17,8 @@
 		<p class="notice">※ 찾고자 하는 도로명주소 또는 건물명을 선택해주세요.</p>	
 	</div>
 	<div class="checkBoxArea">
-		&nbsp;&nbsp;<input type="radio" name="checkForSearch" id="checkForSearch1" checked="checked" value="roadSearch" onclick="checkBtn(1);"> 도로명주소 검색
-		<input type="radio" name="checkForSearch" id="checkForSearch2" value="buildSearch" onclick="checkBtn(2);"> 건물명 검색
+		&nbsp;&nbsp;<input type="radio" name="checkForSearch" id="checkForSearch" class="checkForSearch1" checked="checked" value="roadSearch" onclick="checkBtn(1);"> 도로명주소 검색
+		<input type="radio" name="checkForSearch" id="checkForSearch" class="checkForSearch2" value="buildSearch" onclick="checkBtn(2);"> 건물명 검색
 	</div>
 	<div class="selectBoxArea">
 		 <div class="innerBox1">
@@ -40,12 +40,12 @@
 		 <div id="innerBox2">
 		    &nbsp;도로명&nbsp;&nbsp;<input type="text" name="roadName" id="roadName" class="roadName" size="15">
 		    &nbsp;&nbsp;&nbsp;건물번호&nbsp;&nbsp;<input type="text" name="buildingBonbun" id="buildingBonbun" class="buildingBonbun" size="5"> - 
-		    <input type="text" name="buildingBonbun" id="buildingBubun" class="buildingBubun" size="5">
+		    <input type="text" name="buildingBubun" id="buildingBubun" class="buildingBubun" size="5">
 		    <button type="button" class="searchBtn" onclick="searchBtn();">검색</button>
 		 </div>
 		 <div id="innerBox3" style="display:none;">
 		    건물명&nbsp;&nbsp;<input type="text" name="buildingName" id="buildingName" class="buildingName" size="40"/>
-		    <button type="button" class="searchBtn">검색</button>
+		    <button type="button" class="searchBtn" onclick="searchBtn();">검색</button>
 		 </div>
 	</div>
 	<div>
