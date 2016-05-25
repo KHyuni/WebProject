@@ -157,6 +157,7 @@ public class WebController {
 		String sido_name = request.getParameter("sido_name");
 		String sigungu_name = request.getParameter("sigungu_name");
 		String sigungu_building_name = request.getParameter("buildingName");
+		sigungu_building_name = sigungu_building_name.toUpperCase();
 		WebDAOImpl dao = sqlSession.getMapper(WebDAOImpl.class);
 		model.addAttribute("searchBuildingName", dao.addrSearch3(sido_name, sigungu_name, sigungu_building_name));
 		int rowNum = dao.addrSearch3(sido_name, sigungu_name, sigungu_building_name).size();
