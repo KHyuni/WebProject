@@ -11,7 +11,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import com.project.web.DAO.WebDAOImpl;
+
+import com.project.web.DAO.WebDAO;
 import com.project.web.Service.WebServiceImpl;
 import com.project.web.Util.Constant;
 import com.project.web.VO.WebVO;
@@ -77,7 +78,7 @@ public class WebController {
 			userGender = "F";
 		}
 		
-		WebDAOImpl dao = sqlSession.getMapper(WebDAOImpl.class);
+		WebDAO dao = sqlSession.getMapper(WebDAO.class);
 		dao.signUp(userId,userPwd,userName,userGender,userAddr1,userAddr2,userPhone,userEmail,regDate);
 		
 		
@@ -92,7 +93,7 @@ public class WebController {
 	@RequestMapping(value = "/memberList")
 	public String memberList(Model model){
 		System.out.println("memberList()");
-		WebDAOImpl dao = sqlSession.getMapper(WebDAOImpl.class);
+		WebDAO dao = sqlSession.getMapper(WebDAO.class);
 		model.addAttribute("memberList", dao.memberList());
 		int rowNum = dao.memberList().size();
 		model.addAttribute("rowNum", rowNum);
@@ -104,7 +105,7 @@ public class WebController {
 	@RequestMapping(value = "/addrPopup")
 	public String resultAddr(Model model){
 		System.out.println("addrPopup()");
-		WebDAOImpl dao = sqlSession.getMapper(WebDAOImpl.class);
+		WebDAO dao = sqlSession.getMapper(WebDAO.class);
 		model.addAttribute("searchAddr", dao.findSido());
 
 		
@@ -114,7 +115,7 @@ public class WebController {
 	@RequestMapping(value = "/addrSearch")
 	public String addrSearch(HttpServletRequest request, Model model){
 		String sido_name = request.getParameter("sido_name");
-		WebDAOImpl dao = sqlSession.getMapper(WebDAOImpl.class);
+		WebDAO dao = sqlSession.getMapper(WebDAO.class);
 		model.addAttribute("searchSigungu", dao.addrSearch(sido_name));
 		
 		return "/addrSearch";
@@ -140,7 +141,7 @@ public class WebController {
 		
 		System.out.println("addrSearch1() 실행");
 		
-		WebDAOImpl dao = sqlSession.getMapper(WebDAOImpl.class);
+		WebDAO dao = sqlSession.getMapper(WebDAO.class);
 		if(building_bonbun == 0){
 			model.addAttribute("searchRoadName", dao.addrSearch1(sido_name, sigungu_name, road_name));
 			int rowNum = dao.addrSearch1(sido_name, sigungu_name, road_name).size();
@@ -160,7 +161,7 @@ public class WebController {
 		String sigungu_name = request.getParameter("sigungu_name");
 		String sigungu_building_name = request.getParameter("buildingName");
 		sigungu_building_name = sigungu_building_name.toUpperCase();
-		WebDAOImpl dao = sqlSession.getMapper(WebDAOImpl.class);
+		WebDAO dao = sqlSession.getMapper(WebDAO.class);
 		model.addAttribute("searchBuildingName", dao.addrSearch3(sido_name, sigungu_name, sigungu_building_name));
 		int rowNum = dao.addrSearch3(sido_name, sigungu_name, sigungu_building_name).size();
 		model.addAttribute("rowNum",rowNum);
