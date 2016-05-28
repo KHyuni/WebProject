@@ -10,8 +10,11 @@
 <title></title>
 </head>
 <body>
-	<div>
+	<div id="wrap">
 		<table>
+			<tr>
+				<td colspan="8" align="right">총 회원수는 [${rowNum}]명 입니다.</td>
+			</tr>
 			<tr class="memberListTitle">
 				<td>회원번호</td>
 				<td>아이디</td>

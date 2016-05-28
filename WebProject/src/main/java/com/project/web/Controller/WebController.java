@@ -31,11 +31,11 @@ public class WebController {
 		Constant.template = this.template;
 	}
 	
-	@RequestMapping(value = "/")
+/*	@RequestMapping(value = "/")
 	public String home() {
 		
 		return "index";
-	}
+	}*/
 	
 	@RequestMapping(value = "/idCheck")
 	public String idCheck(){
@@ -94,6 +94,8 @@ public class WebController {
 		System.out.println("memberList()");
 		WebDAOImpl dao = sqlSession.getMapper(WebDAOImpl.class);
 		model.addAttribute("memberList", dao.memberList());
+		int rowNum = dao.memberList().size();
+		model.addAttribute("rowNum", rowNum);
 		
 		return "/memberList";
 	}
@@ -163,5 +165,11 @@ public class WebController {
 		int rowNum = dao.addrSearch3(sido_name, sigungu_name, sigungu_building_name).size();
 		model.addAttribute("rowNum",rowNum);
 		return "/addrSearch3";
+	}
+	
+	@RequestMapping(value = "/")
+	public String tempMain(){
+		
+		return "/tempMain";
 	}
 }

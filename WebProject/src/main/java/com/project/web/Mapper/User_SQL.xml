@@ -11,8 +11,8 @@
 	
 	<select id="memberList" resultType="com.project.web.VO.WebVO">
 		<![CDATA[
-			SELECT userId, userNo, userName, userAddr1, userAddr2, userPhone, userEmail, regdate 
-			    FROM user_tb
+			SELECT userId, userNo, userName, userGender, userAddr1, userAddr2, userPhone, userEmail, regdate 
+			    FROM user_tb ORDER BY userNo DESC
 		]]>
 	</select>
 	
